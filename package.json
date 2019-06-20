@@ -1,0 +1,22 @@
+{
+  "name": "rihor-bot",
+  "description": "Teste de um bot no discord",
+  "author": {
+    "email": "rihor1000@gmail.com",
+    "name": "Pedro Pinho",
+    "url": "https://github.com/rihor"
+  },
+  "version": "1.0.0",
+  "main": "src",
+  "license": "MIT",
+  "scripts": {
+    "start": "node src",
+    "dev": "nodemon src"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  },
+  "dependencies": {
+    "discord.js": "^11.5.1"
+  }
+}

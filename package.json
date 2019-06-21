@@ -1,6 +1,6 @@
 {
   "name": "rihor-bot",
-  "description": "Teste de um bot no discord",
+  "description": "Um bot no discord",
   "author": {
     "email": "rihor1000@gmail.com",
     "name": "Pedro Pinho",
@@ -15,9 +15,12 @@
   },
   "devDependencies": {
     "eslint": "^5.16.0",
-    "nodemon": "^1.19.1"
+    "nodemon": "^1.19.1",
+    "opusscript": "^0.0.6"
   },
   "dependencies": {
-    "discord.js": "^11.5.1"
+    "discord.js": "^11.5.1",
+    "node-opus": "^0.3.2",
+    "ytdl-core": "^0.29.2"
   }
 }

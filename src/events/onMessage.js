@@ -1,7 +1,8 @@
 const roll = require('../commands/roll');
+const play = require('../commands/play');
 const prefix = '!';
 
-const onMessage = message => {
+const onMessage = (message, mapQueue) => {
 	// não responde bot
 	if (message.author.bot) return;
 	// ignora mensagem que não começa com "!"
@@ -12,13 +13,15 @@ const onMessage = message => {
 
 	// separa a primeira parte da mensagem como o comando e o resto como opções
 	const [command, ...commandOptions] = message.content
-		.trim()
-		.toLowerCase()
+		.trim()		
 		.split(' ');
 
 	switch (command) {
 	case 'roll':
 		roll(commandOptions, message);
+		break;
+	case 'play':
+		play(commandOptions, message, mapQueue);
 		break;
 	}
 };

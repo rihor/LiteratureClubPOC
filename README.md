@@ -28,8 +28,14 @@ Resultado:
     18, 19, 6, 5, 7 = 55
 ```
 
+### !play
+
+Exemplo `!play https://www.youtube.com/watch?v=rBfMEUiobfE`
+
 ## METAS
 
 - [x] Clean code
 - [x] Comando de rolagem de dados
-- [ ] Tocar música
+- [x] Tocar música
+- [ ] Parar música
+- [ ] Pular música

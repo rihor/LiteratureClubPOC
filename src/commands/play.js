@@ -44,46 +44,42 @@ const play = async (commandOptions, message, mapQueue) => {
 	// caso o server não tenha nenhuma playlist, cria uma
 	if (!guildQueue) {
 		const queue = {
-			textChannel: message.channel,
-			voiceChannel,
+			// textChannel: message.channel,
+			// voiceChannel,
+			// playing: true
 			connection: null,
 			musics: [],
-			volume: 5,
-			playing: true
 		};
 		mapQueue.set(guildId, queue);
-		// queue.musics.push(music);
 		queue.musics.push(musicUrl);
 
 		try {
-			const connection = await voiceChannel.join();
-			queue.connection = connection;
-			console.log(queue.musics);
-			playMusic(message.guild, queue.musics[0], mapQueue);
+			queue.connection = await voiceChannel.join();
+			playMusic(queue.musics[0], queue);
 		} catch (error) {
-			// queue.delete(guildId);
-			return message.guild.send(error);
+			console.log(error);
+			return;
 		}
 	} else {
 		guildQueue.musics.push(musicUrl);
-		// console.log(mapQueue);
 	}
 };
 
-function playMusic(guild, musicUrl, mapQueue) {
-	const serverQueue = mapQueue.get(guild.id);
+function playMusic(musicUrl, queue) {
+	// faz download de um vídeo do youtube
 	const stream = ytdl(musicUrl, {
 		filter: 'audioonly',
 		highWaterMark: 1024 * 1024 * 10
 	});
-	const dispatcher = serverQueue.connection.playStream(stream, {
+	// conecta no canal de voz e roda a stream
+	const dispatcher = queue.connection.playStream(stream, {
 		seek: 0,
 		volume: 0.5
 	});
+	// toca a próxima música assim que acabar a que está tocando
 	dispatcher.on('end', () => {
-		console.log('Musica acabou!');
-		serverQueue.musics.shift();
-		playMusic(guild, serverQueue.musics[0], mapQueue);
+		queue.musics.shift();
+		playMusic(queue.musics[0], queue);
 	});
 }
 

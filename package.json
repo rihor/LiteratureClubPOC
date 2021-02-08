@@ -1,6 +1,7 @@
 {
   "name": "rihor-bot",
   "description": "Um bot no discord",
+  "module": "src",
   "author": {
     "email": "rihor1000@gmail.com",
     "name": "Pedro Pinho",
@@ -10,17 +11,31 @@
   "main": "src",
   "license": "MIT",
   "scripts": {
-    "start": "node src",
-    "dev": "nodemon src"
+    "dev": "tsnd src"
   },
   "devDependencies": {
-    "eslint": "^5.16.0",
+    "@types/node": "^14.14.25",
+    "@typescript-eslint/eslint-plugin": "^4.14.2",
+    "@typescript-eslint/parser": "^4.14.2",
+    "eslint": "^7.19.0",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.3.1",
     "nodemon": "^1.19.1",
-    "opusscript": "^0.0.6"
+    "prettier": "^2.2.1",
+    "ts-node-dev": "^1.1.1",
+    "typescript": "^4.1.3",
+    "cross-env": "^7.0.3",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-import-resolver-typescript": "^2.0.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "jest": "^26.1.0",
+    "ts-jest": "^26.1.4",
+    "ts-node": "3.3.0"
   },
   "dependencies": {
-    "discord.js": "^11.5.1",
-    "node-opus": "^0.3.2",
-    "ytdl-core": "^0.29.2"
+    "discord.js": "^11.5.1"
   }
 }

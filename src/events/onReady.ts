@@ -1,15 +1,29 @@
-import { Client } from 'discord.js';
-import findChannel from "../helpers/findChannel";
+import { Client } from "discord.js"
 
-const onReady = (client: Client) => {
-  console.log("Conectado nos servidores:");
-  console.log(` - ${client.guilds.map((guild) => guild.name)}`);
-  const channel = findChannel(client, "recomendações");
+import findChannel from "../helpers/findChannel"
+import findGuild from "../helpers/findGuild"
+import getAllMessages from "../helpers/getAllMessages"
 
-  // channel.messages.fetch()
-  // 	.then(messages => console.log(`${messages.filter(m => m.author.id).size} messages`))
-  // 	.catch(console.error);
-  // console.log(channel);
-};
+const onReady = (client: Client): void => {
+  const guild = findGuild(client, "TESTES")
+
+  if (!guild) {
+    return
+  } else {
+    console.log(`Guild found! -> ${guild.name}`)
+  }
+
+  const channel = findChannel(guild, "recomendações")
+
+  if (!channel) {
+    return
+  } else {
+    console.log(`Channel found! -> ${channel.name}`)
+  }
+
+  const messages = getAllMessages(channel)
+
+  console.log(messages)
+}
 
 export default onReady

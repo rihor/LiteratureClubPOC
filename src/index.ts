@@ -1,19 +1,18 @@
-import Discord from "discord.js";
-import onReady from "./events/onReady";
+import Discord from "discord.js"
 
-const client = new Discord.Client();
+import { token } from "./auth.json"
+import onReady from "./events/onReady"
 
-const { token } = require("./auth.json");
+const client = new Discord.Client()
 
 // quando ligar o bot
 client.on("ready", () => {
-  onReady(client);
-
-});
+  onReady(client)
+})
 
 // quando qualquer mensagem na guild
 // client.on('message', message => {
 // 	onMessage(message, mapQueue);
 // });
 
-client.login(token);
+client.login(token)

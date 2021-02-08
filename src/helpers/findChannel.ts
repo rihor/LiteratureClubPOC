@@ -1,28 +1,18 @@
-import { Client, GuildChannel } from "discord.js";
+import { Guild, GuildChannel } from "discord.js"
 
-const findChannel = (
-  client: Client,
+const findChannelOnGuild = (
+  guild: Guild,
   channelName: string
-): GuildChannel | null => {
-  let channelFound: GuildChannel | null = null;
+): GuildChannel | undefined => {
+  if (!guild.available) {
+    return
+  }
 
-  client.guilds.map((guild) => {
-    if (!guild) {
-      return false;
-    }
+  const guildChannel = guild.channels.cache.find(
+    (channel) => channel.name === channelName
+  )
 
-    guild.channels.find((channel) => {
-      if (channel.name === channelName) {
-        channelFound = channel;
-      }
+  return guildChannel
+}
 
-      return channel.name === channelName;
-    });
-
-    return true;
-  });
-
-  return channelFound;
-};
-
-export default findChannel;
+export default findChannelOnGuild

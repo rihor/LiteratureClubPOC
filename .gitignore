@@ -2,3 +2,6 @@
 
 #token
 /src/auth.json
+
+.env
+credentials.json

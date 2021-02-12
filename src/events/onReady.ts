@@ -1,29 +1,25 @@
 import { Client } from "discord.js"
 
-import findChannel from "../helpers/findChannel"
-import findGuild from "../helpers/findGuild"
-import getAllMessages from "../helpers/getAllMessages"
+// import findChannel from "../helpers/findChannel"
+// import findGuild from "../helpers/findGuild"
+import sheets from "../sheets"
 
 const onReady = (client: Client): void => {
-  const guild = findGuild(client, "TESTES")
+  // const guild = findGuild(client, "TESTES")
 
-  if (!guild) {
-    return
-  } else {
-    console.log(`Guild found! -> ${guild.name}`)
-  }
+  // if (!guild) {
+  //   return
+  // } else {
+  //   console.log(`Guild found! -> ${guild.name}`)
+  // }
 
-  const channel = findChannel(guild, "recomendações")
+  // const channel = findChannel(guild, "recomendações")
 
-  if (!channel) {
-    return
-  } else {
-    console.log(`Channel found! -> ${channel.name}`)
-  }
+  // if (channel) {
+  //   console.log(`Channel found! -> ${channel.name}`)
+  // }
 
-  const messages = getAllMessages(channel)
-
-  console.log(messages)
+  sheets()
 }
 
 export default onReady

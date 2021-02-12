@@ -1,10 +1,10 @@
 import { Message } from "discord.js"
 
-import roll from "../commands/roll"
+import saveMessages from "../commands/saveMessages"
 
 const prefix = "!"
 
-const onMessage = (message: Message, mapQueue: Map<string, string>) => {
+const onMessage = (message: Message): void => {
   // não responde bot
   if (message.author.bot) return
   // ignora mensagem que não começa com "!"
@@ -14,13 +14,13 @@ const onMessage = (message: Message, mapQueue: Map<string, string>) => {
   message.content = message.content.slice(1)
 
   // separa a primeira parte da mensagem como o comando e o resto como opções
-  const [command, ...commandOptions] = message.content.trim().split(" ")
+  const [command] = message.content.trim().split(" ")
 
   switch (command) {
-    case "roll":
-      roll(commandOptions, message)
+    case "get":
+      saveMessages(message)
       break
   }
 }
 
-module.exports = onMessage
+export default onMessage

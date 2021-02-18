@@ -1,6 +1,6 @@
 import { GoogleSpreadsheet, GoogleSpreadsheetRow } from "google-spreadsheet"
 
-import { credentials } from "../configs/sheets"
+import { credentials } from "../../configs/sheets"
 
 export type AddRowsArgs = {
   sheetTitle: string

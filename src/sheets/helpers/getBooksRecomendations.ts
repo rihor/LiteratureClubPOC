@@ -1,8 +1,8 @@
 import { Collection, Client, Message, TextChannel } from "discord.js"
 
-import { guildName, channelName } from "../configs/discord"
-import findChannelOnGuild from "./findChannel"
-import findGuild from "./findGuild"
+import { guildName, channelName } from "../../configs/discord"
+import findChannelOnGuild from "../../helpers/findChannel"
+import findGuild from "../../helpers/findGuild"
 
 const getBooksRecomendations = async (
   client: Client,

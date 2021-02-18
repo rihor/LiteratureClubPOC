@@ -1,9 +1,8 @@
 import { Client } from "discord.js"
 
-import extractMessageIdFromUrl from "../helpers/extractMessageIdFromUrl"
-import formatBooksRecomendations from "../helpers/formatBooksRecomendations"
-import getBooksRecomendations from "../helpers/getBooksRecomendations"
-import { booksRecommendations as sheetConfig } from "./configs/sheets"
+import extractMessageIdFromUrl from "./helpers/extractMessageIdFromUrl"
+import formatBooksRecomendations from "./helpers/formatBooksRecomendations"
+import getBooksRecomendations from "./helpers/getBooksRecomendations"
 import LiteratureClubSpreadsheet from "./models/LiteratureClubSpreadsheet"
 
 const saveNewRecommendedBooksToSheet = async (

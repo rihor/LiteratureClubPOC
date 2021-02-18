@@ -1,6 +1,6 @@
 import { GoogleSpreadsheetRow } from "google-spreadsheet"
 
-import { booksRecommendations as sheetConfig } from "../configs/sheets"
+import { booksRecommendations as sheetConfig } from "../../configs/sheets"
 import Spreadsheet from "./Spreadsheet"
 
 export type AddRowsArgs = {

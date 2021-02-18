@@ -31,8 +31,6 @@ https://console.developers.google.com/
 - Habilitar o uso da `Google Sheets API`;
 - Ir na página de credenciais;
 - Clicar em criar credenciais;
-- Criar `Chave de API` e depois `Criar conta de serviço` também;
+- Criar `Criar conta de serviço`;
 
 O arquivo json que você baixar você coloca na raiz do projeto como `credentials.json`.
-
-A chave de API você coloca no `.env`. Conforme o exemplo `.env.example`.

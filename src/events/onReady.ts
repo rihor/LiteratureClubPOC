@@ -2,7 +2,7 @@ import { Client } from "discord.js"
 
 // import findChannel from "../helpers/findChannel"
 // import findGuild from "../helpers/findGuild"
-import sheets from "../sheets"
+import { saveNewRecommendedBooksToSheet } from "../sheets"
 
 const onReady = (client: Client): void => {
   // const guild = findGuild(client, "TESTES")
@@ -19,7 +19,7 @@ const onReady = (client: Client): void => {
   //   console.log(`Channel found! -> ${channel.name}`)
   // }
 
-  sheets()
+  saveNewRecommendedBooksToSheet(client)
 }
 
 export default onReady

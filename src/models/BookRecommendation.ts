@@ -1,3 +1,7 @@
-class BookRecommendation {}
-
-export default BookRecommendation
+export interface BookRecomendation {
+  messageLink: string
+  title: string
+  author: string
+  pages: string
+  userId: string
+}

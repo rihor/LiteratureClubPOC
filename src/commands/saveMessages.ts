@@ -22,7 +22,7 @@ const saveMessages = async (
     booksRecomendations
   )
 
-  console.log(formattedBooksRecomendations)
+  // console.log(formattedBooksRecomendations)
 }
 
 export default saveMessages

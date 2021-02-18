@@ -1,13 +1,11 @@
 import { Collection, Message } from "discord.js"
 
-import BookRecomendation from "../models/BookRecommendation"
+import { BookRecomendation } from "../models/BookRecommendation"
 
 type MessagePart = {
   field: string
   value: string
 }
-
-// type RecomendationText = Array<MessagePart>
 
 const normalizeContent = (content: string): string => {
   return content
@@ -84,19 +82,19 @@ const formatBooksRecomendations = (
         }
       }
     })
+
     if (Object.keys(recomendationObj).length !== 0) {
-      // const bR = new BookRecomendation({
-      //   userId: recomendationMessage.author.id,
-      //   author: recomendationObj.autor,
-      //   book: recomendationObj.titulo,
-      //   read: false,
-      //   pages: recomendationObj.paginas,
-      //   readTime: "",
-      //   messageLink: recomendationMessage.url,
-      //   observations: "",
-      //   publicDomain: false,
-      // })
-      // books.push(bR)
+      const { autor, paginas, titulo } = recomendationObj
+
+      if (autor && paginas && titulo) {
+        books.push({
+          author: recomendationObj.autor,
+          pages: recomendationObj.paginas,
+          messageLink: recomendationMessage.url,
+          title: recomendationObj.titulo,
+          userId: recomendationMessage.author.id,
+        })
+      }
     }
   })
 

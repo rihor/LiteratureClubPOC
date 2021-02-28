@@ -1,6 +1,5 @@
 import { GoogleSpreadsheetRow } from "google-spreadsheet"
 
-import { booksRecommendations as sheetConfig } from "../../configs/sheets"
 import Spreadsheet from "./Spreadsheet"
 
 export type AddRowsArgs = {
@@ -10,8 +9,8 @@ export type AddRowsArgs = {
 }
 
 class LiteratureClubSpreadsheet extends Spreadsheet {
-  constructor() {
-    super(sheetConfig.spreadsheetId)
+  constructor(spreadsheetId: string) {
+    super(spreadsheetId)
   }
 
   public async addRows({

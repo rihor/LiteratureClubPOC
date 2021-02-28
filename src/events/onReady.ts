@@ -1,3 +1,4 @@
+import { CronJob } from "cron"
 import { Client } from "discord.js"
 
 // import findChannel from "../helpers/findChannel"
@@ -5,21 +6,19 @@ import { Client } from "discord.js"
 import { saveNewRecommendedBooksToSheet } from "../sheets"
 
 const onReady = (client: Client): void => {
-  // const guild = findGuild(client, "TESTES")
+  const cronInterval = "0 */6 * * *"
 
-  // if (!guild) {
-  //   return
-  // } else {
-  //   console.log(`Guild found! -> ${guild.name}`)
-  // }
+  // this is a cron job, to know more go to
+  // https://crontab.guru/
+  // this job starts every 6 hours
+  const recurringJob = new CronJob(cronInterval, () => {
+    saveNewRecommendedBooksToSheet(client)
+  })
 
-  // const channel = findChannel(guild, "recomendações")
-
-  // if (channel) {
-  //   console.log(`Channel found! -> ${channel.name}`)
-  // }
-
-  saveNewRecommendedBooksToSheet(client)
+  recurringJob.start()
+  console.log(
+    `Job scheduled, cron is ${cronInterval} | will save recommended books to a sheet`
+  )
 }
 
 export default onReady

@@ -1,7 +1,7 @@
 import credentials from "../../credentials.json"
 
 export const booksRecommendations = {
-  spreadsheetId: "1eFd9414Hgs8qEsT1tTCJXeU42RxVA1jMmvy0zJrOwRg",
+  spreadsheetId: process.env.spreadsheet_id,
   sheets: {
     recommendations: "recomendações",
   },

@@ -1,13 +1,21 @@
 import { Collection, Client, Message, TextChannel } from "discord.js"
 
-import { guildName, channelName } from "../../configs/discord"
 import findChannelOnGuild from "../../helpers/findChannel"
 import findGuild from "../../helpers/findGuild"
 
-const getBooksRecomendations = async (
-  client: Client,
+type Args = {
+  client: Client
   startFromMessageId?: string
-): Promise<Collection<string, Message> | undefined> => {
+  guildName: string
+  channelName: string
+}
+
+const getBooksRecomendations = async ({
+  client,
+  startFromMessageId,
+  guildName,
+  channelName,
+}: Args): Promise<Collection<string, Message> | undefined> => {
   const guild = findGuild(client, guildName)
 
   if (!guild) return

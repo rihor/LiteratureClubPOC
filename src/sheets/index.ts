@@ -1,5 +1,7 @@
 import { Client } from "discord.js"
 
+import { channelName, guildName } from "../configs/discord"
+import { booksRecommendations as sheetConfig } from "../configs/sheets"
 import extractMessageIdFromUrl from "./helpers/extractMessageIdFromUrl"
 import formatBooksRecomendations from "./helpers/formatBooksRecomendations"
 import getBooksRecomendations from "./helpers/getBooksRecomendations"
@@ -8,12 +10,20 @@ import LiteratureClubSpreadsheet from "./models/LiteratureClubSpreadsheet"
 const saveNewRecommendedBooksToSheet = async (
   client: Client
 ): Promise<void> => {
-  console.log("Starting process...")
+  if (!channelName || !guildName) {
+    throw new Error("No channel_name or guild_name on .env")
+  }
 
-  const spreadsheet = new LiteratureClubSpreadsheet()
+  console.log("[CRON JOB] ~> starting process of saving recommendations")
+
+  if (!sheetConfig.spreadsheetId) {
+    throw Error("No spreadsheet id on .env")
+  }
+
+  const spreadsheet = new LiteratureClubSpreadsheet(sheetConfig.spreadsheetId)
 
   const lastSheetRow = await spreadsheet.getLastRow("recomendações")
-  const rawLastRowData = lastSheetRow?._rawData as Array<string>
+  const rawLastRowData = lastSheetRow?._rawData as Array<string> | undefined
 
   let lastMessageLinkSaved: string | undefined
   let lastMessageId: string | undefined
@@ -24,7 +34,12 @@ const saveNewRecommendedBooksToSheet = async (
     lastMessageId = extractMessageIdFromUrl(lastMessageLinkSaved)
   }
 
-  const messagesData = await getBooksRecomendations(client, lastMessageId)
+  const messagesData = await getBooksRecomendations({
+    client,
+    channelName,
+    guildName,
+    startFromMessageId: lastMessageId,
+  })
 
   if (!messagesData) {
     console.error("Could not get discord messages.")
@@ -54,7 +69,7 @@ const saveNewRecommendedBooksToSheet = async (
     },
   })
 
-  console.log(`Ending process... Spreadsheet updated with success.`)
+  console.log(`[CRON JOB] ~> ending process of saving recommendations`)
 }
 
 export { saveNewRecommendedBooksToSheet }

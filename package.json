@@ -1,24 +1,42 @@
 {
-  "name": "rihor-bot",
-  "description": "Um bot no discord",
+  "name": "biblibot",
+  "description": "A discord bot for my literature club.",
   "module": "src",
   "author": {
     "email": "rihor1000@gmail.com",
     "name": "Pedro Pinho",
     "url": "https://github.com/rihor"
   },
-  "version": "1.0.0",
+  "version": "2.0.0",
   "main": "src",
   "license": "MIT",
+  "lint-staged": {
+    "*.ts": [
+      "eslint --fix --ext .ts"
+    ]
+  },
   "scripts": {
-    "dev": "tsnd src"
+    "dev": "tsnd src",
+    "build": "rimraf build/ && babel src --extensions \".js,.ts\" --out-dir build --copy-files",
+    "start": "node build/index.js",
+    "commit": "cz",
+    "postinstall": "husky install",
+    "test": "jest"
   },
   "devDependencies": {
+    "@babel/cli": "^7.13.0",
+    "@babel/core": "^7.13.1",
+    "@babel/node": "^7.13.0",
+    "@babel/preset-env": "^7.13.5",
+    "@babel/preset-typescript": "^7.13.0",
     "@types/google-spreadsheet": "^3.0.2",
-    "@types/node": "^14.14.25",
+    "@types/jest": "^26.0.20",
+    "@types/node": "^14.14.31",
     "@typescript-eslint/eslint-plugin": "^4.14.2",
     "@typescript-eslint/parser": "^4.14.2",
+    "commitizen": "^4.2.3",
     "cross-env": "^7.0.3",
+    "cz-conventional-changelog": "3.3.0",
     "eslint": "^7.19.0",
     "eslint-config-prettier": "^7.2.0",
     "eslint-config-standard": "^14.1.1",
@@ -28,9 +46,12 @@
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
-    "jest": "^26.1.0",
+    "husky": "^5.1.1",
+    "jest": "^26.6.3",
+    "lint-staged": "^10.5.4",
     "nodemon": "^1.19.1",
     "prettier": "^2.2.1",
+    "rimraf": "^3.0.2",
     "ts-jest": "^26.1.4",
     "ts-node": "3.3.0",
     "ts-node-dev": "^1.1.1",
@@ -40,5 +61,10 @@
     "discord.js": "^12.5.1",
     "dotenv": "^8.2.0",
     "google-spreadsheet": "^3.1.15"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }

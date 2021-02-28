@@ -1,5 +1,7 @@
 # RIHOR-BOT
 
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+
 Apenas um bot de [discord](https://discordapp.com/).
 
 ## TOKEN
